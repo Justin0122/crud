@@ -1,0 +1,19 @@
+{
+    "name": "justin0122/crud",
+    "description": "crud - A simple Laravel package.",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Justin Jongstra",
+            "email": "justin@justinjongstra.nl"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "Justin0122\\Crud\\": "src/"
+        }
+    },
+    "require": {}
+}
