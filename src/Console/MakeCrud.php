@@ -1,6 +1,6 @@
 <?php
 
-namespace Justin\Crud\Console;
+namespace Justin0122\Crud\Console;
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;

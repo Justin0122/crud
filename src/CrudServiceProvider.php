@@ -1,10 +1,10 @@
 <?php
 
-namespace Justin\Crud;
+namespace Justin0122\Crud;
 
 use Illuminate\Support\ServiceProvider;
-use Justin\Crud\Console\DeleteCrud;
-use Justin\Crud\Console\MakeCrud;
+use Justin0122\Crud\Console\DeleteCrud;
+use Justin0122\Crud\Console\MakeCrud;
 
 class CrudServiceProvider extends ServiceProvider
 {

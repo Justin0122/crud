@@ -11,7 +11,7 @@ This package requires the following dependencies:
   <summary><b>Composer</b></summary>
 
 ```bash
-composer require justin/crud
+composer require justin0122/crud
 ```
 </details>
 
@@ -27,7 +27,7 @@ Add:
 
     ...
 
-    "justin/crud": "*"
+    "justin0122/crud": "*"
     },
 
     ...
@@ -37,7 +37,7 @@ Add:
     "repositories": [
         {
             "type": "path",
-            "url": "packages/justin/crud"
+            "url": "packages/justin0122/crud"
         }
     ],
 ]
