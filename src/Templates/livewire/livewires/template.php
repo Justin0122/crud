@@ -18,7 +18,7 @@ class {{class_name}} extends Component
     public function render()
     {
         if ($this->id && !{{class_name}}Model::find($this->id)) {
-            abort(404);
+            $this->id = '';
         }
     return view('livewire.{{class_name}}.index',
         [

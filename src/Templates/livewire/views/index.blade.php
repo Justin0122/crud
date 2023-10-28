@@ -8,7 +8,7 @@
 
         {{ $results->links() }}
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-40">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             @foreach($results as $result)
                 @php
                     $attributes = $result->getAttributes();
@@ -20,7 +20,7 @@
                     :title-classes="'text-2xl'"
                     :description="Str::limit($body, 100) . '' ?? ''"
                     :image="$result->image ?? 'https://placehold.co/1200x1200'"
-                    :button="['url' => url()->current() . '?id=' . $result->id, 'label' => 'View'] ?? ''"
+                    :button="['url' => $url . '?id=' . $result->id, 'label' => 'View'] ?? ''"
                     :deleteButton="['id' => $result->id] ?? ''"
                 />
             @endforeach
