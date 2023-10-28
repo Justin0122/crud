@@ -15,6 +15,9 @@ class {{class_name}} extends Component
     public $id;
     public $form = [];
 
+    public $url = '';
+
+
     public function render()
     {
         if ($this->id && !{{class_name}}Model::find($this->id)) {
@@ -24,6 +27,7 @@ class {{class_name}} extends Component
         [
             'results' => $this->id ? {{class_name}}Model::find($this->id) : {{class_name}}Model::paginate(10),
             'fillables' => (new {{class_name}}Model())->getFillable(),
+            'url' => current(explode('?', url()->current())),
         ]);
     }
 
