@@ -17,7 +17,8 @@
             Submit
         </button>
     </form>
-    <x-danger-button wire:click="delete({{ $results->id }})" class="mt-4 py-2 px-4 bg-red-500 text-white rounded-lg hover:bg-red-600 transition duration-300">
+    <x-danger-button wire:click="delete({{ $results->id }})" wire:confirm="Are you sure you want to delete this?"
+                     class="mt-4 py-2 px-4 bg-red-500 text-white rounded-lg hover:bg-red-600 transition duration-300">
         Delete
     </x-danger-button>
 </div>

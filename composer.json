@@ -1,6 +1,6 @@
 {
     "name": "justin0122/crud",
-    "description": "crud - A simple Laravel package.",
+    "description": "crud - a package for laravel livewire to easily create a simple crud",
     "type": "project",
     "license": "MIT",
     "authors": [

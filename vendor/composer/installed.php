@@ -1,19 +1,19 @@
 <?php return array(
     'root' => array(
-        'name' => 'justin/crud',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => NULL,
+        'name' => 'justin0122/crud',
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => 'cfcc78bc9dd3075f7bd8237b1f595cfbc198749a',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
         'dev' => true,
     ),
     'versions' => array(
-        'justin/crud' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => NULL,
+        'justin0122/crud' => array(
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => 'cfcc78bc9dd3075f7bd8237b1f595cfbc198749a',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
