@@ -1,7 +1,7 @@
 {
     "name": "justin0122/crud",
     "description": "crud - A simple Laravel package.",
-    "type": "project",
+    "type": "library",
     "license": "MIT",
     "authors": [
         {
