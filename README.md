@@ -64,7 +64,7 @@ Add the service provider to the config/app.php file:
 ## Usage:
 To generate a crud, run the following command:
 ```bash
-php artisan crud:generate Post
+php artisan crud:make Post
 ```
   <summary><i>Post is the name of the model.</i></summary>
 
@@ -87,7 +87,7 @@ resources/views/livewire/crud/edit.blade.php
 The forms are created using the `$fillables` array in the model. If you want to add more fields, just add them to the array in the model.
 
 ### Views
-Because the forms are generated dynamically, theredy are made <span style="color:orange">global</span>. This means that you can use them in other views as well. The views are located in the `resources/views/livewire/crud` folder.
+Because the forms are generated dynamically, they are made <span style="color:orange">global</span>. This means that you can use them in other views as well. The views are located in the `resources/views/livewire/crud` folder.
 </details>
 
 ## Adding the fillable fields
