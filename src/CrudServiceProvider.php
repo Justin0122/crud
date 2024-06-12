@@ -10,7 +10,6 @@ class CrudServiceProvider extends ServiceProvider
 {
     protected array $commands = [
         MakeCrud::class,
-        DeleteCrud::class,
     ];
 
 
