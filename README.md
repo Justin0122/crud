@@ -4,59 +4,35 @@
 This package requires the following dependencies:
 - [Laravel Livewire](https://livewire.laravel.com/docs/quickstart)
 - [Tailwind CSS](https://tailwindcss.com/docs/installation)
+- [Flux](https://fluxui.dev/)
+
+### Pre-requisites
+To install the package, you need to set the minimum stability to dev in the composer.json file:
+```json
+{
+...
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
+```
 
 ### Installation
 
-<details>
-  <summary><b>Composer</b></summary>
 
 ```bash
 composer require justin0122/crud
 ```
-</details>
 
-<details>
-  <summary><b>Zip(folder)</b></summary>
 
-Copy the packages directory to the root of your project.
-Add:
-```json
-//composer.json
+### Configuration
 
-    "require": {
-
-    ...
-
-    "justin0122/crud": "*"
-    },
-
-    ...
-
-    "minimum-stability": "dev",
-    "prefer-stable": true,
-    "repositories": [
-        {
-            "type": "path",
-            "url": "packages/justin0122/crud"
-        }
-    ],
-]
-```
-Run:
-```bash
-composer dump-autoload
-composer update
-```
-
-</details>
-
-Add the service provider to the config/app.php file:
+Add the service provider to the bootstrap/providers.php file:
 ```php
 # config/app.php
 
 'providers' => [
     ...
-    \Justin\Crud\CrudServiceProvider::class,
+    \Justin0122\Crud\CrudServiceProvider::class,
     ...
 ],
 ```
@@ -109,12 +85,11 @@ Add the routes in the web.php file:
 
 use App\Http\Livewire\Post;
 
-Route::get(
-    '/post',
-    function () {
-        return view('post');
-    }
-)->name('post');
+    Route::get('/post', fn() => view('post'))->name('post');
+
+    Route::delete('/post/{id}', fn($id) => redirect()->route('post'))->name('post.delete');
+
+    Route::get('/post?id={id}', fn($id) => view('post'))->name('post.edit');
 ```
 
 ## Adding the Livewire component
@@ -122,49 +97,16 @@ Add the Livewire component to the view:
 ```html
 <!-- resources/views/post.blade.php -->
 
-<livewire:post />
+<x-layouts.app :title="__('Posts')">
+    <livewire:post />
+</x-layouts.app>
 ```
 
 ## Displaying the Posts
-To display the Posts in the view, you can hardcode the fields you want to display, otherwise it will display the 2nd field in the fillable array as the title and the 3rd field as the description.
 ```html
 <!-- resources/views/livewires/posts/index.blade.php -->
 
-    @foreach($results as $result)
-        <x-card
-            :title="$result->title ?? ''"
-            :title-classes="'text-2xl'"
-            :description="Str::limit($result->body, 100) . '' ?? ''"
-            :image="$result->image ?? 'https://placehold.co/1200x1200'"
-            :button="['url' => '/post?id=' . $post->id, 'label' => 'View'] ?? ''"
-            :deleteButton="['id' => $result->id] ?? ''"
-        />
-    @endforeach
+<x-table :results="$results" :type="post" :crud="true" :fillables="$fillables"/>
+
+
 ```
-  <summary><i>In this example, the title, body (description) and url are hardcoded.</i>
-</summary>
-
-<details>
-  <summary><b>Default</b></summary>
-
-
-```html
-    @foreach($results as $result)
-        @php
-            $attributes = $result->getAttributes();
-            $title = $attributes[array_keys($attributes)[1]];
-            $body = $attributes[array_keys($attributes)[2]];
-        @endphp
-        <x-card
-            :title="$title ?? ''"
-            :title-classes="'text-2xl'"
-            :description="Str::limit($body, 100) . '' ?? ''"
-            :image="$result->image ?? 'https://placehold.co/1200x1200'"
-            :button="['url' => url()->current() . '?id=' . $result->id, 'label' => 'View'] ?? ''"
-            :deleteButton="['id' => $result->id] ?? ''"
-        />
-    @endforeach
-```
-</details>
-
-

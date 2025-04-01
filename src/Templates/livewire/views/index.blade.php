@@ -1,6 +1,7 @@
 <div class="container mx-auto px-4">
     @if($this->id)
         {{ __('Edit') }}
+        {{ $this->id }}
         @include('livewire.crud.edit')
     @else
         {{ __('Create') }}
@@ -8,23 +9,8 @@
 
         {{ $results->links() }}
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            @foreach($results as $result)
-                @php
-                    $attributes = $result->getAttributes();
-                    $title = $attributes[array_keys($attributes)[1]];
-                    $body = $attributes[array_keys($attributes)[2]];
-                @endphp
-                <x-card
-                    :title="$title ?? ''"
-                    :title-classes="'text-2xl'"
-                    :description="Str::limit($body, 100) . '' ?? ''"
-                    :image="$result->image ?? 'https://placehold.co/1200x1200'"
-                    :button="['url' => $url . '?id=' . $result->id, 'label' => 'View'] ?? ''"
-                    :deleteButton="['id' => $result->id] ?? ''"
-                />
-            @endforeach
-
+        <div class="flex">
+            <x-table :results="$results" :type="" :crud="true" :fillables="$fillables"/>
         </div>
     @endif
 </div>

@@ -26,6 +26,7 @@ class MakeCrud extends Command
 
         if ($this->generateLivewireFile($formattedName, $name)) {
             $this->createModelAndMigration($formattedName);
+            $this->copyComponentTemplates();
             $this->info("{$formattedName} CRUD files created successfully.");
         } else {
             $this->error("{$formattedName} CRUD files already exist.");
@@ -57,7 +58,6 @@ class MakeCrud extends Command
 
     private function createViews($className)
     {
-
         $directory = resource_path("views/livewire/{$className}");
         $this->filesystem->ensureDirectoryExists($directory);
 
@@ -84,5 +84,20 @@ class MakeCrud extends Command
     {
         $this->call('make:model', ['name' => $formattedName]);
         $this->call('make:migration', ['name' => 'create_' . Str::snake($formattedName) . 's_table']);
+    }
+
+    private function copyComponentTemplates()
+    {
+        $componentsPath = resource_path('views/components');
+        $templateComponentsPath = __DIR__ . '/../Templates/components';
+
+        $files = $this->filesystem->allFiles($templateComponentsPath);
+
+        foreach ($files as $file) {
+            $destinationPath = $componentsPath . '/' . $file->getFilename();
+            if (!$this->filesystem->exists($destinationPath)) {
+                $this->filesystem->copy($file->getPathname(), $destinationPath);
+            }
+        }
     }
 }
